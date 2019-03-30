@@ -1,2 +1,2 @@
-# aws-cdk-exploration
-learning related to AWS CDK
+# aws-exploration
+learning related to AWS CDK, SAM, etc
