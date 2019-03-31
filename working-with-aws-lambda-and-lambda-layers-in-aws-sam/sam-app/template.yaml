@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: sam app
+Globals:
+    Function:
+        Timeout: 3
+        Runtime: nodejs8.10
+
+Resources:
+    TempConversionFunction:
+        Type: AWS::Serverless::Function 
+        Properties:
+            CodeUri: hello-world/
+            Handler: app.lambdaHandler         
+            Layers:
+            - arn:aws:lambda:us-east-2:970273885721:layer:sam-app-dependencies:2
+            Events:
+                HelloWorld:
+                    Type: Api
+                    Properties:
+                        Path: /{conversion}/{value}
+                        Method: get

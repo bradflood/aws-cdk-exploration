@@ -1,0 +1,21 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: sam app
+Globals:
+  Function:
+    Timeout: 3
+    Runtime: nodejs8.10
+Resources:
+  TempConversionFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: s3://bwflood-aws-exploration-code/2bdc6333233392c1d7b48655370458e5
+      Handler: app.lambdaHandler
+      Layers:
+      - arn:aws:lambda:us-east-2:970273885721:layer:sam-app-dependencies:1
+      Events:
+        HelloWorld:
+          Type: Api
+          Properties:
+            Path: /{conversion}/{value}
+            Method: get

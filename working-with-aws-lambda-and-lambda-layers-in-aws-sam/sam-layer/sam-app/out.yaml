@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: sam app
+Globals:
+  Function:
+    Timeout: 3
+    Runtime: nodejs8.10
+Resources:
+  TempConversionDepLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: sam-app-dependencies
+      ContentUri: s3://bwflood-aws-exploration-code/fc4c99c888716105046a0349631de3b1
+      Description: Updated dependencies for sam-app [temp-units-conv]
+      CompatibleRuntimes:
+      - nodejs6.10
+      - nodejs8.10
+      LicenseInfo: MIT
+      RetentionPolicy: Retain
